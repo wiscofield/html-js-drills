@@ -223,13 +223,26 @@ document.addEventListener('keydown', function() {
  *
  *   For this you will need to have a listener on the submit form and add
  *   anything entered into the text box to the to do list on the right side.
+ * 
  *
  * Bonus:
  *   Add a delete button next to each item and allow it to delete the item
  *   it is next to.
  */
 
-// Your code goes here
+var tasknew=document.getElementById('todo')
+var todotask =document.getElementById('todo').value; //get user input everytime they type in
+console.log(todotask);
+//create a list to store in
+var newtodo="<li>" +todotask +"</li>";
+
+
+tasknew.addEventListener('click',function(){
+//add to list
+document.getElementById('todos').appendChild(newtodo);
+},false);
+
+
 
 /****************************************
  * Section 5 - setInterval + setTimeout *
@@ -249,6 +262,19 @@ document.addEventListener('keydown', function() {
  */
 
 // Your code goes here
+let timer = setInterval(eachSecond, 1000);
+var time = 0;
+function eachSecond() {
+  time ++;
+  document.getElementById('seconds').innerText = time;
+}
+
+let delay = setTimeout(delayedDisplay, 5000);
+
+function delayedDisplay() {
+    document.getElementById('delayedDisplay').innerText = 'You stayed for 5 seconds! yay';
+}
+
 
 /****************************************
  * Section 6 - Your own section!        *
