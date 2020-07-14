@@ -22,7 +22,7 @@ function addName() {
   // - https://www.w3schools.com/jsref/prop_node_innertext.asp
 
   let nameElement = document.querySelector('#name');
-  nameElement.innerText = 'See script.js!';
+  nameElement.innerText = 'Boop';
 }
 
 function addFavoriteThings() {
@@ -36,6 +36,15 @@ function addFavoriteThings() {
   //   - https://htmldog.com/guides/javascript/advanced/creatingelements/
   //   - https://www.javascripttutorial.net/javascript-dom/javascript-createelement/
   //   - https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+
+  let favElement = document.querySelector('#favthings');
+  let favListItem = document.createElement('li');
+  let favListItem2 = document.createElement('li');
+  favElement.appendChild(favListItem);
+  favListItem.innerText = 'treats';
+  favElement.appendChild(favListItem2);
+  favListItem2.innerText='toys';
+
 }
 
 function replaceImage() {
@@ -45,7 +54,13 @@ function replaceImage() {
 
   // See:
   // - https://www.tutorialrepublic.com/javascript-tutorial/javascript-dom-get-set-attributes.php
-  // - https://www.w3schools.com/jsref/met_element_setattribute.asp
+  // - https://www.w3schools.com/jsr*ef/met_element_setattribute.asp
+
+  var currentimage = document.getElementById("picture");
+  if (currentimage.src.match("https://picsum.photos/id/237/200/300"))
+  {
+  currentimage.src="https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg";
+  }
 }
 
 function changeCodeStatus() {
@@ -54,6 +69,21 @@ function changeCodeStatus() {
   // 1. Get a reference to <div id="codestatus">
   // 2. Create image element containing a sweet ol' meme
   // 3. Replace text in codestatus w/ image
+
+  //creating the reference  
+  var ref = document.getElementById("codestatus");
+
+  //creating an image element
+  var meme = document.createElement("img");
+  meme.src="https://i.pinimg.com/originals/12/ac/a3/12aca3c4e28a267919555df9212f4e32.jpg";
+
+  //removing the existig text element
+ref.remove("text");
+
+//inserting elements
+//var $newItem= $('<img src="https://i.pinimg.com/originals/12/ac/a3/12aca3c4e28a267919555df9212f4e32.jpg">')
+  
+  
 }
 
 // Get a reference to the button w/ id="show-info-button"
@@ -87,7 +117,6 @@ let informationForm = document.querySelector('#information-form');
 // Do something when form is submitted
 informationForm.addEventListener('submit', function(event) {
   event.preventDefault(); // You will want this here. Remove it and see what changes.
-
   console.log('Form submitted');
 
   // Your job:
@@ -96,6 +125,36 @@ informationForm.addEventListener('submit', function(event) {
 
   // Google things like:
   //   javascript form element get values
+  
+let fname = document.getElementById('fname').value;
+let lname = document.getElementById('lname').value;
+let cars = document.getElementById('cars').value;
+let icecreamyes = document.getElementById('icecreamyes').checked;
+let human = document.getElementById('humancheck').checked;
+let coder = document.getElementById('codercheck').checked;
+
+document.getElementById('firstname').innerText = fname;
+document.getElementById('lastname').innerText = lname;
+document.getElementById('chosencar').innerText = cars;
+if(icecreamyes) {
+  document.getElementById('icecreamstatus').innerText = 'Yes';
+}
+else {
+  document.getElementById('icecreamstatus').innerText = 'No';
+}
+
+if(human) {
+  if(coder) {
+        document.getElementById('checks').innerText = 'Human, Coder';
+  }
+  else {
+    document.getElementById('checks').innerText = 'Human';
+  }
+}
+else if(coder) {
+      document.getElementById('checks').innerText = 'Coder';
+}
+
 });
 
 /*************************************
