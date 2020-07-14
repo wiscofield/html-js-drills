@@ -24,7 +24,9 @@ function addName() {
   let nameElement = document.querySelector('#name');
   nameElement.innerText = 'Boop';
 }
-
+ let favElement = document.querySelector('#favthings');
+  let favListItem = document.createElement('li');
+  let favListItem2 = document.createElement('li');
 function addFavoriteThings() {
   console.log('Called addFavoriteThings()');
 
@@ -37,9 +39,9 @@ function addFavoriteThings() {
   //   - https://www.javascripttutorial.net/javascript-dom/javascript-createelement/
   //   - https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
 
-  let favElement = document.querySelector('#favthings');
-  let favListItem = document.createElement('li');
-  let favListItem2 = document.createElement('li');
+ 
+  //how do I clear this list?
+  
   favElement.appendChild(favListItem);
   favListItem.innerText = 'treats';
   favElement.appendChild(favListItem2);
@@ -71,17 +73,19 @@ function changeCodeStatus() {
   // 3. Replace text in codestatus w/ image
 
   //creating the reference  
-  var ref = document.getElementById("codestatus");
+  let ref = document.getElementById("codestatus");
 
   //creating an image element
-  var meme = document.createElement("img");
-  meme.src="https://i.pinimg.com/originals/12/ac/a3/12aca3c4e28a267919555df9212f4e32.jpg";
+  let meme = document.createElement('img');
+  meme.setAttribute('height', '50%');
+  meme.setAttribute('width', '50%');
+  meme.setAttribute('src', 'https://i.redd.it/latsyqzaqnq21.jpg');
 
-  //removing the existig text element
-ref.remove("text");
+  //removing the existing text element
+  ref.innerText = ''; //ref.remove() was removing the div element
+  ref.appendChild(meme);
 
-//inserting elements
-//var $newItem= $('<img src="https://i.pinimg.com/originals/12/ac/a3/12aca3c4e28a267919555df9212f4e32.jpg">')
+  //inserting elements
   
   
 }
@@ -170,10 +174,11 @@ else if(coder) {
 // then log something to the console
 
 // Fill in ________ to get a reference to the correct button on the page
-let consoleLogButton = document.querySelector('#________');
+let consoleLogButton = document.querySelector('console-log-button');
 
 // Log something when that button is clicked
 consoleLogButton.addEventListener('click', function() {
+  
   console.log('Change this text if you want!');
 });
 
