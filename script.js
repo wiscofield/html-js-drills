@@ -225,22 +225,54 @@ document.addEventListener('keydown', function() {
  *   anything entered into the text box to the to do list on the right side.
  * 
  *
+ 
  * Bonus:
  *   Add a delete button next to each item and allow it to delete the item
  *   it is next to.
  */
+//a simple to dolist
+function addToList(event) {
+  event.preventDefault();
+  let li = document.createElement('li');
+  let newtodo = document.getElementById('todo');
+  let submittask = document.createTextNode(newtodo.value);
 
-var tasknew=document.getElementById('todo')
-var todotask =document.getElementById('todo').value; //get user input everytime they type in
-console.log(todotask);
-//create a list to store in
-var newtodo="<li>" +todotask +"</li>";
+  if (newtodo.value == '') {
+
+    alert("type something");
+  }
+  else{
+    li.appendChild(submittask);
+    document.getElementById("todos").appendChild(li);
+    newtodo.value = '';
+  }
 
 
-tasknew.addEventListener('click',function(){
-//add to list
-document.getElementById('todos').appendChild(newtodo);
-},false);
+var items = document.getElementsByTagName('li');
+for (var i=0; i < items.length; i++){
+  var span = document.createElement('span');
+  var txt = document.createTextNode("x");
+  span.className = "close";
+  span.appendChild(txt);
+  items[i].appendChild(span);
+}
+//source:https://www.w3schools.com/howto/howto_js_todolist.asp
+//close
+
+var close =document.getElementsByClassName('close');
+for (var i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+}
+
+let newItemAdd = document.querySelector('#todo-form');
+newItemAdd.addEventListener('submit', addToList);
+
+
 
 
 
